@@ -7,19 +7,20 @@ import log4js from "log4js";
 const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
-const createCountryValidator = (req, res, next) => {
-  logger.info("[createCountryValidator] INIT");
+const createMarketValidator = (req, res, next) => {
+  logger.info("[createMarketValidator] INIT");
 
   const data = req.body;
 
   const schema = Joi.object({
-    isoCode: Joi.string().required(),
+    marketCode: Joi.string().required(),
     name: Joi.string().required(),
+    countryIsoCodes: Joi.array().items(Joi.string()).optional(),
   });
 
   const { error } = schema.validate(data);
 
-  logger.info("[createCountryValidator] FINISH");
+  logger.info("[createMarketValidator] FINISH");
   error
     ? ResponseUtil.validationFailed(
         res,
@@ -29,4 +30,4 @@ const createCountryValidator = (req, res, next) => {
     : next();
 };
 
-export default createCountryValidator;
+export default createMarketValidator;

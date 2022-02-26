@@ -12,11 +12,9 @@ const updateCountryValidator = (req, res, next) => {
 
   const data = req.body;
 
-  const pattern = /^[a-zA-Z]+$/
-
   const schema = Joi.object({
-    isoCode: Joi.string().regex(pattern).optional(),
-    name: Joi.string().regex(pattern).optional(),
+    isoCode: Joi.string().optional(),
+    name: Joi.string().optional(),
   });
   const { error } = schema.validate(data);
 

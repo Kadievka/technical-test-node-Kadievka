@@ -1,23 +1,23 @@
 import express from "express";
 import jwtMiddleware from "express-jwt";
-import createCountryValidator from "../middlewares/createCountryValidator";
-import updateCountryValidator from "../middlewares/updateCountryValidator";
+import createMarketValidator from "../middlewares/createMarketValidator";
+import updateMarketValidator from "../middlewares/updateMarketValidator";
 import {
-  getAllCountries,
-  createCountry,
-  getCountryByIsoCode,
-  updateCountry,
-  deleteCountry,
-} from "../controllers/country.controller";
+  getAllMarkets,
+  createMarket,
+  getMarketByCode,
+  updateMarket,
+  deleteMarket,
+} from "../controllers/market.controller";
 
 const router = express.Router();
 
 /**
  * @swagger
- * /countries/:
+ * /markets/:
  *   get:
  *     tags:
- *       - country
+ *       - market
  *     security:
  *       - jwt: []
  *     summary: Gets all resources.
@@ -60,25 +60,30 @@ const router = express.Router();
  *                       id:
  *                         type: string
  *                         example: 60edfd01aea9375a24057720
- *                       isoCode:
+ *                       marketCode:
  *                         type: string
- *                         example: ESP
+ *                         example: M-112-A2
  *                       name:
  *                         type: string
- *                         example: España
+ *                         example: Market-112-A2
+ *                       countryIsoCodes:
+ *                         type: array
+ *                         items:
+ *                           type: string
+ *                           example: "ESP"
  *                   message:
  *                     type: string
  *                     example: Request successful
  */
-router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), getAllCountries);
+router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), getAllMarkets);
 
 
 /**
  * @swagger
- * /countries/create:
+ * /markets/create:
  *   post:
  *     tags:
- *       - country
+ *       - market
  *     security:
  *       - jwt: []
  *     summary: Adds a new resource.
@@ -88,14 +93,19 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *           schema:
  *            type: object
  *            properties:
- *              isoCode:
+ *              marketCode:
  *                type: string
  *                required: true
- *                example: ESP
+ *                example: M-112-A2
  *              name:
  *                type: string
  *                required: true
- *                example: España
+ *                example: Market-112-A2
+ *              countryIsoCodes:
+ *                type: array
+ *                items:
+ *                  type: string
+ *                  example: "ESP"
  *     responses:
  *       422:
  *         description: Returns false success, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is.
@@ -117,7 +127,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                   example: Invalid request data
  *                 error:
  *                   type: string
- *                   example: \"isoCode\" is required
+ *                   example: \"marketCode\" is required
  *       401:
  *         description: Returns false success, status code 401, internal error code 401, "Unauthorized access" message when Authorization Bearer is invalid.
  *         content:
@@ -155,7 +165,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                   type: string
  *                   example: Something went wrong
  *       200:
- *         description: Returns a country object in the field of data.
+ *         description: Returns a market object in the field of data.
  *         content:
  *           application/json:
  *             schema:
@@ -172,37 +182,42 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                     id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
- *                     isoCode:
+ *                     marketCode:
  *                       type: string
- *                       example: ESP
+ *                       example: M-112-A2
  *                     name:
  *                       type: string
- *                       example: España
+ *                       example: Market-112-A2
+ *                     countryIsoCodes:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                         example: "ESP"
  *                 message:
  *                   type: string
  *                   example: Request successful
  */
 router.route("/create").post(
   jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
-  createCountryValidator,
-  createCountry
+  createMarketValidator,
+  createMarket
 );
 
 /**
  * @swagger
- * /countries/{isoCode}:
+ * /markets/{marketCode}:
  *   get:
  *     tags:
- *       - country
+ *       - market
  *     security:
  *       - jwt: []
  *     summary: Gets one resource.
  *     parameters:
  *       - in: path
- *         name: isoCode
+ *         name: marketCode
  *         required: true
  *         type: string
- *         example: ESP
+ *         example: M-112-A2
  *     responses:
  *       401:
  *         description: Returns false success, status code 401, internal error code 401, "Unauthorized access" message when Authorization Bearer is invalid.
@@ -240,12 +255,17 @@ router.route("/create").post(
  *                     id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
- *                     isoCode:
+ *                     marketCode:
  *                       type: string
- *                       example: ESP
+ *                       example: M-112-A2
  *                     name:
  *                       type: string
- *                       example: España
+ *                       example: Market-112-A2
+ *                     countryIsoCodes:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                         example: "ESP"
  *                 message:
  *                   type: string
  *                   example: Request successful
@@ -268,37 +288,42 @@ router.route("/create").post(
  *                   type: string
  *                   example: Request successful
 */
-router.route("/:isoCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), getCountryByIsoCode);
+router.route("/:marketCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), getMarketByCode);
 
 /**
  * @swagger
- * /countries/update/{isoCode}:
+ * /markets/update/{marketCode}:
  *   put:
  *     tags:
- *       - country
+ *       - market
  *     security:
  *       - jwt: []
  *     summary: Updates one resource.
  *     parameters:
  *       - in: path
- *         name: isoCode
+ *         name: marketCode
  *         required: true
  *         type: string
- *         example: ESP
+ *         example: M-112-A2
  *     requestBody:
  *       content:
  *         application/json:
  *           schema:
  *            type: object
  *            properties:
- *              isoCode:
+ *              marketCode:
  *                type: string
  *                required: false
- *                example: ESP
+ *                example: M-112-A2
  *              name:
  *                type: string
  *                required: false
- *                example: España
+ *                example: Market-112-A2
+ *              countryIsoCodes:
+ *                type: array
+ *                items:
+ *                  type: string
+ *                  example: "ESP"
  *     responses:
  *       422:
  *         description: Returns false success, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is.
@@ -320,7 +345,7 @@ router.route("/:isoCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, al
  *                   example: Invalid request data
  *                 error:
  *                   type: string
- *                   example: \"isoCode\" must be a string
+ *                   example: \"marketCode\" must be a string
  *       401:
  *         description: Returns false success, status code 401, internal error code 401, "Unauthorized access" message when Authorization Bearer is invalid.
  *         content:
@@ -375,12 +400,17 @@ router.route("/:isoCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, al
  *                     id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
- *                     isoCode:
+ *                     marketCode:
  *                       type: string
- *                       example: ESP
+ *                       example: M-112-A2
  *                     name:
  *                       type: string
- *                       example: España
+ *                       example: Market-112-A2
+ *                     countryIsoCodes:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                         example: "ESP"
  *                 message:
  *                   type: string
  *                   example: Request successful
@@ -403,23 +433,23 @@ router.route("/:isoCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, al
  *                   type: string
  *                   example: Request successful
 */
-router.route("/update/:isoCode").put(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), updateCountryValidator, updateCountry);
+router.route("/update/:marketCode").put(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), updateMarketValidator, updateMarket);
 
 /**
  * @swagger
- * /countries/delete/{isoCode}:
+ * /markets/delete/{marketCode}:
  *   delete:
  *     tags:
- *       - country
+ *       - market
  *     security:
  *       - jwt: []
  *     summary: Deletes a new resource.
  *     parameters:
  *       - in: path
- *         name: isoCode
+ *         name: marketCode
  *         required: true
  *         type: string
- *         example: ESP
+ *         example: M-112-A2
  *     responses:
  *       401:
  *         description: Returns false success, status code 401, internal error code 401, "Unauthorized access" message when Authorization Bearer is invalid.
@@ -440,7 +470,7 @@ router.route("/update/:isoCode").put(jwtMiddleware({ secret: process.env.JWT_SEC
  *                   type: string
  *                   example: Unauthorized access
  *       200:
- *         description: Returns a country object in the field of data.
+ *         description: Returns a market object in the field of data.
  *         content:
  *           application/json:
  *             schema:
@@ -457,12 +487,17 @@ router.route("/update/:isoCode").put(jwtMiddleware({ secret: process.env.JWT_SEC
  *                     id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
- *                     isoCode:
+ *                     marketCode:
  *                       type: string
- *                       example: ESP
+ *                       example: M-112-A2
  *                     name:
  *                       type: string
- *                       example: España
+ *                       example: Market-112-A2
+ *                     countryIsoCodes:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                         example: "ESP"
  *                 message:
  *                   type: string
  *                   example: Request successful
@@ -485,6 +520,6 @@ router.route("/update/:isoCode").put(jwtMiddleware({ secret: process.env.JWT_SEC
  *                   type: string
  *                   example: Request successful
 */
-router.route("/delete/:isoCode").delete(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), deleteCountry);
+router.route("/delete/:marketCode").delete(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }), deleteMarket);
 
 module.exports = router;
