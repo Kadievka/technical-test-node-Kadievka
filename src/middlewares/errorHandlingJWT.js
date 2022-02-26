@@ -16,8 +16,9 @@ const errorHandlingJWT = (err, req, res, next) => {
       errors.UNAUTHORIZED,
       errors.UNAUTHORIZED_MESSAGE
     );
+  }else{
+    ResponseUtil.serverError(res, errors.PROCESS_NOT_FINISHED, err.message);
   }
-  ResponseUtil.badRequest(res, errors.PROCESS_NOT_FINISHED, err.message);
 
   logger.info("[errorHandlingJWT] FINISH");
 };

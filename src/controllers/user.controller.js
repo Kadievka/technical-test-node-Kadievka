@@ -8,31 +8,31 @@ const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
 async function createUser(req, res) {
-  logger.info("[createUser controller] INIT");
+  logger.info("[createUser@userController] INIT");
   try {
     const userToRegister = req.body;
     const user = await UserService.createUserService(userToRegister);
     ResponseUtil.success(res, user);
   } catch (error) {
-    logger.error("[createUser controller] ERROR", error);
-    ResponseUtil.badRequest(res, errors.PROCESS_NOT_FINISHED, error.message);
+    logger.error("[createUser@userController] ERROR", error);
+    ResponseUtil.badRequest(res, error.code || errors.PROCESS_NOT_FINISHED, error.message);
   }
 
-  logger.info("[createUser controller] FINISHED");
+  logger.info("[createUser@userController] FINISHED");
 }
 
 async function login(req, res) {
-  logger.info("[login controller] INIT");
+  logger.info("[login@userController] INIT");
   try {
     const userToLogin = req.body;
     const user = await UserService.loginService(userToLogin);
     ResponseUtil.success(res, user);
   } catch (error) {
-    logger.error("[login controller] ERROR", error);
-    ResponseUtil.badRequest(res, errors.PROCESS_NOT_FINISHED, error.message);
+    logger.error("[login@userController] ERROR", error);
+    ResponseUtil.badRequest(res, error.code || errors.PROCESS_NOT_FINISHED, error.message);
   }
 
-  logger.info("[login controller] FINISHED");
+  logger.info("[login@userController] FINISHED");
 }
 
 export { createUser, login };

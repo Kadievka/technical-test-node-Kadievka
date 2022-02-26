@@ -32,7 +32,7 @@ const router = express.Router();
  *                example: 123456789
  *     responses:
  *       422:
- *         description: Returns success; false, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is, in this example email field.
+ *         description: Returns false success, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is, in this example email field.
  *         content:
  *           application/json:
  *             schema:
@@ -53,7 +53,7 @@ const router = express.Router();
  *                   type: string
  *                   example: \"email\" is required
  *       400:
- *         description: Returns false success, status code 400, internal error code 55, and a "User already exists" message when the user email is taken.
+ *         description: Returns false success, status code 400, internal error code 43, and a "User already exists" message when the user email is taken.
  *         content:
  *           application/json:
  *             schema:
@@ -66,7 +66,7 @@ const router = express.Router();
  *                 code:
  *                   type: number
  *                   description: internal error code.
- *                   example: 55
+ *                   example: 43
  *                 message:
  *                   type: string
  *                   example: User already exists
@@ -120,7 +120,7 @@ router.route("/").post(createUserValidator, createUser);
  *                example: 123456789
  *     responses:
  *       422:
- *         description: Returns success; false, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is, in this example email field.
+ *         description: Returns false success, status code 422, internal error code 422, "Invalid request data" message, and specifies where the error is, in this example email field.
  *         content:
  *           application/json:
  *             schema:
@@ -141,7 +141,7 @@ router.route("/").post(createUserValidator, createUser);
  *                   type: string
  *                   example: \"email\" is required
  *       400:
- *         description: Returns false success, status code 400, internal error code 55, and an "Unauthorized access" message when the user email is taken.
+ *         description: Returns false success, status code 400, internal error code 401, and an "Unauthorized access" message when the user email is taken.
  *         content:
  *           application/json:
  *             schema:
@@ -154,7 +154,7 @@ router.route("/").post(createUserValidator, createUser);
  *                 code:
  *                   type: number
  *                   description: internal error code.
- *                   example: 55
+ *                   example: 401
  *                 message:
  *                   type: string
  *                   example: Unauthorized access

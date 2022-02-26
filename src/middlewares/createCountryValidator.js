@@ -7,20 +7,21 @@ import log4js from "log4js";
 const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
-const createUserValidator = (req, res, next) => {
-  logger.info("[createUserValidator] INIT");
+const createCountryValidator = (req, res, next) => {
+  logger.info("[createCountryValidator] INIT");
 
   const data = req.body;
 
+  const pattern = /^[a-zA-Z]+$/
+
   const schema = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().min(8).required(),
-    confirmPassword: Joi.string().min(8).required().valid(Joi.ref("password")),
+    isoCode: Joi.string().regex(pattern).required(),
+    name: Joi.string().regex(pattern).required(),
   });
 
   const { error } = schema.validate(data);
 
-  logger.info("[createUserValidator] FINISH");
+  logger.info("[createCountryValidator] FINISH");
   error
     ? ResponseUtil.validationFailed(
         res,
@@ -30,4 +31,4 @@ const createUserValidator = (req, res, next) => {
     : next();
 };
 
-export default createUserValidator;
+export default createCountryValidator;

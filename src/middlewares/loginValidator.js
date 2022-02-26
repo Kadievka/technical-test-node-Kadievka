@@ -21,7 +21,7 @@ const loginValidator = (req, res, next) => {
 
   logger.info("[loginValidator] FINISH");
   error
-    ? ResponseUtil.badRequest(
+    ? ResponseUtil.validationFailed(
         res,
         errors.VALIDATION_FAILED,
         error.details[0].message

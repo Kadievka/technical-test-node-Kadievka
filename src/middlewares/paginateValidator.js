@@ -11,7 +11,7 @@ logger.level = process.env.LOGGER_LEVEL;
 const paginateValidator = (req, res, next) => {
   logger.info("[paginateValidator] INIT");
 
-  const data = req.query;
+  let data = {...req.query};
 
   logger.info(`[paginateValidator] data: ${JSON.stringify(data)}`);
 
@@ -39,7 +39,7 @@ const paginateValidator = (req, res, next) => {
 
   logger.info("[paginateValidator] FINISH");
   error
-    ? ResponseUtil.badRequest(
+    ? ResponseUtil.validationFailed(
         res,
         errors.VALIDATION_FAILED,
         error.details[0].message

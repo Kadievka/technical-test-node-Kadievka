@@ -9,8 +9,14 @@ const codeInternalErrors = {
   USER_ALREADY_EXISTS: 40,
   USER_ALREADY_EXISTS_MESSAGE: "User already exists",
 
-  USER_NO_FOUND: 41,
-  USER_NO_FOUND_MESSAGE: "User no found",
+  USER_NOT_FOUND: 41,
+  USER_NOT_FOUND_MESSAGE: "User not found",
+
+  RESOURCE_NOT_FOUND: 42,
+  RESOURCE_NOT_FOUND_MESSAGE: "Resource not found",
+
+  RESOURCE_ALREADY_EXISTS: 43,
+  RESOURCE_ALREADY_EXISTS_MESSAGE: "Resource already exists",
 
   VALIDATION_FAILED: 422,
   VALIDATION_FAILED_MESSAGE: "Invalid request data",

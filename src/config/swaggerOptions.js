@@ -28,6 +28,7 @@ const swaggerOptions = {
   ],
   apis: [
     `${__dirname}/../routes/user.routes.js`,
+    `${__dirname}/../routes/country.routes.js`,
   ],
 };
 
