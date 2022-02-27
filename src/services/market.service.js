@@ -15,39 +15,21 @@ export default class MarketService {
     if(marketExists){
       throwError(errors.RESOURCE_ALREADY_EXISTS, errors.RESOURCE_ALREADY_EXISTS_MESSAGE);
     }
-    market.countryIsoCodes = await this.validateCountryIsoCodes(market.countryIsoCodes);
+    market.countryIsoCodes = await CountryService.validateCountryIsoCodes(market.countryIsoCodes);
     const createdMarket = await Market.create(market);
     logger.info("[createMarket@MarketService] FINISH");
     return {
-      id: createdMarket.id,
+      _id: createdMarket._id,
       marketCode: createdMarket.marketCode,
       name: createdMarket.name,
       countryIsoCodes: createdMarket.countryIsoCodes,
     }
   }
 
-  static async validateCountryIsoCodes(countryIsoCodes){
-    logger.info(`[validateCountryIsoCodes@MarketService] INIT countryIsoCodes: ${countryIsoCodes}`);
-    let validCountryIsoCodes = [];
-    if(countryIsoCodes.length){
-      for (const countryIsoCode of countryIsoCodes) {
-        const countryExists = await CountryService.getCountryByIsoCode(countryIsoCode);
-        if(countryExists){
-          validCountryIsoCodes.push(countryIsoCode);
-        }
-      }
-      validCountryIsoCodes = validCountryIsoCodes.filter((item, index) => {
-        return validCountryIsoCodes.indexOf(item) === index;
-      });
-    }
-    logger.info(`[validateCountryIsoCodes@MarketService] FINISH validCountryIsoCodes: ${countryIsoCodes}`);
-    return validCountryIsoCodes;
-  }
-
   static async getAllMarkets() {
     return Market.aggregate([
       {"$project": {
-        "id": 1,
+        "_id": 1,
         "marketCode": 1,
         "name": 1,
         "countryIsoCodes": 1
@@ -62,7 +44,7 @@ export default class MarketService {
 
   static async getMarketByIsoCodeService(marketCode) {
     return Market.findOne({marketCode}).select({
-      id: 1,
+      _id: 1,
       marketCode: 1,
       name: 1,
       countryIsoCodes: 1,
@@ -72,7 +54,7 @@ export default class MarketService {
   static async updateMarket(marketCode, updateData) {
     updateData.countryIsoCodes = await this.validateCountryIsoCodes(updateData.countryIsoCodes);
     return Market.findOneAndUpdate({marketCode}, updateData, {new: true}).select({
-      id: 1,
+      _id: 1,
       marketCode: 1,
       name: 1,
       countryIsoCodes: 1,
@@ -81,7 +63,7 @@ export default class MarketService {
 
   static async deleteMarket(marketCode) {
     return Market.findOneAndDelete({marketCode}).select({
-      id: 1,
+      _id: 1,
       marketCode: 1,
       name: 1,
       countryIsoCodes: 1,

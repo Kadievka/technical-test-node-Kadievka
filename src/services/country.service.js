@@ -17,7 +17,7 @@ export default class CountryService {
     const createdCountry = await Country.create(country);
     logger.info("[createCountry@CountryService] FINISH");
     return {
-      id: createdCountry.id,
+      _id: createdCountry._id,
       isoCode: createdCountry.isoCode,
       name: createdCountry.name,
     }
@@ -26,7 +26,7 @@ export default class CountryService {
   static async getAllCountries() {
     return Country.aggregate([
       {"$project": {
-        "id": 1,
+        "_id": 1,
         "isoCode": 1,
         "name": 1
       }},
@@ -40,7 +40,7 @@ export default class CountryService {
 
   static async getCountryByIsoCodeService(isoCode) {
     return Country.findOne({isoCode}).select({
-      id: 1,
+      _id: 1,
       isoCode: 1,
       name: 1,
     });
@@ -48,7 +48,7 @@ export default class CountryService {
 
   static async updateCountry(isoCode, updateData) {
     return Country.findOneAndUpdate({isoCode}, updateData, {new: true}).select({
-      id: 1,
+      _id: 1,
       isoCode: 1,
       name: 1,
     });
@@ -56,10 +56,45 @@ export default class CountryService {
 
   static async deleteCountry(isoCode) {
     return Country.findOneAndDelete({isoCode}).select({
-      id: 1,
+      _id: 1,
       isoCode: 1,
       name: 1,
     });
+  }
+
+  static async validateIsoCodes(isoCodes){
+    logger.info(`[validateIsoCodes@CountryService] INIT isoCodes: ${isoCodes}`);
+    let validIsoCodes = [];
+    if(isoCodes.length){
+      for (const isoCode of isoCodes) {
+        const validIsoCode = await this.validateCountryIsoCode(isoCode, false);
+        if(validIsoCode){
+          validIsoCodes.push(validIsoCode);
+        }
+      }
+      validIsoCodes = validIsoCodes.filter((item, index) => {
+        return validIsoCodes.indexOf(item) === index;
+      });
+    }
+    logger.info(`[validateIsoCodes@CountryService] FINISH validIsoCodes: ${validIsoCodes}`);
+    return validIsoCodes;
+  }
+
+  static async validateCountryIsoCode(isoCode, throwException = false) {
+    logger.info(`[validateCountryIsoCode@CountryService] INIT isoCode: ${isoCode}`);
+
+    const countryExists = await this.getCountryByIsoCode(isoCode);
+    if(countryExists){
+      logger.info(`[validateCountryIsoCode@CountryService] FINISH`);
+      return isoCode;
+    }
+
+    if(throwException){
+      logger.info(`[validateCountryIsoCode@CountryService] FINISH throwException: ${throwException}`);
+      throwError(errors.VALIDATION_FAILED, errors.RESOURCE_NOT_FOUND_MESSAGE + ": countryIsoCode");
+    }
+
+    logger.info(`[validateCountryIsoCode@CountryService] FINISH countryExists: false`);
   }
 
 }

@@ -3,7 +3,7 @@ import User from "../models/User";
 import jwt from "jsonwebtoken";
 
 const mockCreatedUser = {
-  id: "1",
+  _id: "1",
   email: "email@example.com",
   password: "encrypted",
   createdAt: new Date(),
@@ -54,7 +54,7 @@ describe("user service unit tests", ()=>{
       }
       const result = await UserService.createUserService(user);
       expect(result).toEqual({
-        id: "1",
+        _id: "1",
         email: "email@example.com",
       });
       expect(mockGetUserByEmail).toHaveBeenCalledTimes(1);
@@ -127,7 +127,7 @@ describe("user service unit tests", ()=>{
       };
 
       const expectedUser = {
-        id: "1",
+        _id: "1",
         ...user,
         verifyPassword: await jest.fn().mockImplementation(async ()=> (false)),
       };
@@ -136,7 +136,7 @@ describe("user service unit tests", ()=>{
       await expect(UserService.loginService(user)).rejects.toThrowError();
       expect(mockGetUserByEmail).toHaveBeenCalledTimes(1);
     });
-    it("should return user id, email and jwt when user and password are rigth",async ()=>{
+    it("should return user _id, email and jwt when user and password are rigth",async ()=>{
 
       const mockJwtSign = jest.spyOn(jwt, 'sign').mockReturnValue("123456");
       const mockSaveToken = jest.spyOn(UserService, 'saveToken').mockImplementation(async () => {return});
@@ -147,7 +147,7 @@ describe("user service unit tests", ()=>{
       };
 
       const expectedUser = {
-        id: "1",
+        _id: "1",
         ...user,
         verifyPassword: await jest.fn().mockImplementation(async ()=> (true)),
       };
@@ -156,7 +156,7 @@ describe("user service unit tests", ()=>{
 
       const result = await UserService.loginService(user);
       expect(result).toEqual({
-        id: "1",
+        _id: "1",
         email: "email@example.com",
         jwt: "123456",
       })

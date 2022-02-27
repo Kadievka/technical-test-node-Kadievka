@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "621a9558e3168b25246651f1"
+  },
+  "countryIsoCodes": [
+    "VE",
+    "PA",
+    "CO",
+    "AR",
+    "MX"
+  ],
+  "deleted": false,
+  "marketCode": "M-LA",
+  "name": "Latin america market",
+  "createdAt": {
+    "$date": "2022-02-26T21:02:16.188Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T21:02:16.188Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621a9583e3168b25246651fa"
+  },
+  "countryIsoCodes": [
+    "ESP",
+    "FR",
+    "GB",
+    "IT"
+  ],
+  "deleted": false,
+  "marketCode": "M-EUR",
+  "name": "Europe market",
+  "createdAt": {
+    "$date": "2022-02-26T21:02:59.367Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T21:02:59.367Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621a95b7e3168b2524665201"
+  },
+  "countryIsoCodes": [
+    "USA",
+    "CA"
+  ],
+  "deleted": false,
+  "marketCode": "M-AM",
+  "name": "American market",
+  "createdAt": {
+    "$date": "2022-02-26T21:03:51.367Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T21:03:51.367Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621a95f0e3168b2524665208"
+  },
+  "countryIsoCodes": [
+    "JN",
+    "CN"
+  ],
+  "deleted": false,
+  "marketCode": "M-AS",
+  "name": "Asian market",
+  "createdAt": {
+    "$date": "2022-02-26T21:04:48.630Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T21:04:48.630Z"
+  },
+  "__v": 0
+}]

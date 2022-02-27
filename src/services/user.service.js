@@ -14,7 +14,7 @@ export default class UserService {
 
   static async createUserService(userToRegister) {
 
-    logger.debug(`[createUserService@UserService] INIT`);
+    logger.info(`[createUserService@UserService] INIT`);
 
     userToRegister.email.toLowerCase();
     let user = await this.getUserByEmail(userToRegister.email);
@@ -28,55 +28,51 @@ export default class UserService {
 
     user = await this.createUser(userToRegister);
 
-    logger.debug(`[createUserService@UserService] FINISH`);
+    logger.info(`[createUserService@UserService] FINISH`);
 
     return {
-      id: user.id,
+      _id: user._id,
       email: user.email,
     };
   }
 
   static async getUserByEmail(email) {
-    return User.findOne({email});
+    return User.findOne({email}).select({
+      password: -1
+    });
   }
 
-  static async getUserById(id, throwErrorIfNoExists = false) {
+  static async getUserById(_id, throwErrorIfNoExists = false) {
+    logger.info(`[getUserById@UserService] INIT`);
     let user = null;
-    user = await User.findById(id);
+    user = await User.findById(_id).select({
+      password: -1
+    });
     if (!user && throwErrorIfNoExists) {
       throwError(errors.USER_NOT_FOUND, errors.USER_NOT_FOUND_MESSAGE);
     }
+    logger.info(`[getUserById@UserService] FINISH`);
     return user;
   }
 
   static async loginService(userToLogin) {
-    logger.debug(`[loginService@UserService] INIT`);
+    logger.info(`[loginService@UserService] INIT`);
     userToLogin.email.toLowerCase();
     let user = await this.getUserByEmail(userToLogin.email);
     if (user) {
       const validPassword = await user.verifyPassword(userToLogin.password);
       if (validPassword) {
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-        await this.saveToken(user, token);
-        logger.debug(`[loginService@UserService] FINISH`);
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+        logger.info(`[loginService@UserService] FINISH`);
         return {
-          id: user.id,
+          _id: user._id,
           email: user.email,
           jwt: token,
         };
       }
     }
-    logger.debug(`[loginService@UserService] ERROR`);
+    logger.info(`[loginService@UserService] ERROR`);
     throwError(errors.UNAUTHORIZED, errors.UNAUTHORIZED_MESSAGE);
   }
 
-  static async saveToken(user, token) {
-    logger.debug(`[saveToken@UserService] INIT token: ${token}`);
-    if(token){
-      user.jwtAuthorization = token;
-      await user.save();
-    }
-    logger.debug(`[saveToken@UserService] FINISH user: ${user}`);
-    return user;
-  }
 }

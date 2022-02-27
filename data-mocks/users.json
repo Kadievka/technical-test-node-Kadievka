@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "6218a565c7730706208db867"
+  },
+  "deleted": false,
+  "email": "example@mail.com",
+  "password": "$2a$10$ssJAyH38PHEP88IKxj2jqO2ju2.PRJfM8iDxs6NH.Ok71U/mPIck6",
+  "createdAt": {
+    "$date": "2022-02-25T09:46:13.113Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T16:18:49.419Z"
+  },
+  "__v": 0,
+  "jwtAuthorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMThhNTY1Yzc3MzA3MDYyMDhkYjg2NyIsImlhdCI6MTY0NTg5MjMyOX0.7orU5y6D7AztOCLqEy0FdObPwCM6KGBM32MSr94lRVk"
+},{
+  "_id": {
+    "$oid": "621a1978c251b91cbca21cb9"
+  },
+  "deleted": false,
+  "email": "email_test@gmail.com",
+  "password": "$2a$10$Nksi./ZgtRrpPLBgZs..1eY5ae8KlFUrKNJ9S.8OdxkY8dRfL9lTi",
+  "createdAt": {
+    "$date": "2022-02-26T12:13:44.992Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-26T21:10:29.161Z"
+  },
+  "__v": 0,
+  "jwtAuthorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWExOTc4YzI1MWI5MWNiY2EyMWNiOSIsImlhdCI6MTY0NTkwOTgyOX0.qQMggvDkP75N-FDw7y-FamO_rEBWqoV94IIiYJvazI0"
+}]

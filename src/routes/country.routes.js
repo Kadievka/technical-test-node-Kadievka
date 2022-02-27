@@ -57,7 +57,7 @@ const router = express.Router();
  *                   items:
  *                     type: object
  *                     properties:
- *                       id:
+ *                       _id:
  *                         type: string
  *                         example: 60edfd01aea9375a24057720
  *                       isoCode:
@@ -169,7 +169,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                   type: object
  *                   description: Contains service information.
  *                   properties:
- *                     id:
+ *                     _id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
  *                     isoCode:
@@ -237,7 +237,7 @@ router.route("/create").post(
  *                   type: object
  *                   description: Contains service information.
  *                   properties:
- *                     id:
+ *                     _id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
  *                     isoCode:
@@ -372,7 +372,7 @@ router.route("/:isoCode").get(jwtMiddleware({ secret: process.env.JWT_SECRET, al
  *                   type: object
  *                   description: Contains service information.
  *                   properties:
- *                     id:
+ *                     _id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
  *                     isoCode:
@@ -454,7 +454,7 @@ router.route("/update/:isoCode").put(jwtMiddleware({ secret: process.env.JWT_SEC
  *                   type: object
  *                   description: Contains service information.
  *                   properties:
- *                     id:
+ *                     _id:
  *                       type: string
  *                       example: 60edfd01aea9375a24057720
  *                     isoCode:

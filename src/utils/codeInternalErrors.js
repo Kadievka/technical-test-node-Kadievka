@@ -18,6 +18,10 @@ const codeInternalErrors = {
   RESOURCE_ALREADY_EXISTS: 43,
   RESOURCE_ALREADY_EXISTS_MESSAGE: "Resource already exists",
 
+  REQUIRED_SALE_UNIT_MESSAGE: "\"salesUnit\" field is required",
+
+  REQUIRED_RETURNED_UNIT_MESSAGE: "\"returnsUnit\" field is required",
+
   VALIDATION_FAILED: 422,
   VALIDATION_FAILED_MESSAGE: "Invalid request data",
 };
