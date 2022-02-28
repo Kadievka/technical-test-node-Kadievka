@@ -41,7 +41,7 @@ const mockMarketAM = {
   ],
   "marketCode": "M-AM",
   "name": "American market",
-}
+};
 
 const marketService = MarketService.getInstance();
 const countryService = CountryService.getInstance();
