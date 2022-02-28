@@ -37,17 +37,13 @@ export default class UserService {
   }
 
   static async getUserByEmail(email) {
-    return User.findOne({email}).select({
-      password: -1
-    });
+    return User.findOne({email});
   }
 
   static async getUserById(_id, throwErrorIfNoExists = false) {
     logger.info(`[getUserById@UserService] INIT`);
     let user = null;
-    user = await User.findById(_id).select({
-      password: -1
-    });
+    user = await User.findById(_id);
     if (!user && throwErrorIfNoExists) {
       throwError(errors.USER_NOT_FOUND, errors.USER_NOT_FOUND_MESSAGE);
     }

@@ -88,27 +88,6 @@ describe("user service unit tests", ()=>{
     });
   });
 
-  describe("saveToken", ()=>{
-    it("should return user when there is not token",async ()=>{
-      const user = {
-        email: "email@example.com",
-        password: "123"
-      };
-      const result = await UserService.saveToken(user);
-      expect(result).toBe(user);
-    });
-    it("should return user with jwtAuthorization when there is a token, and save it",async ()=>{
-      const expectedUser = {email: "email@example.com", jwtAuthorization: "fwfea2423fewefw234234"};
-      const user = {
-        email: "email@example.com",
-        password: "123",
-        save: await jest.fn().mockImplementation(async ()=> (expectedUser)),
-      };
-      const result = await UserService.saveToken(user, 'fwfea2423fewefw234234');
-      expect(result).toMatchObject(expectedUser);
-    });
-  });
-
   describe("loginService", ()=>{
     it("should throw an error is user does not exists",async ()=>{
       const user = {
@@ -139,7 +118,6 @@ describe("user service unit tests", ()=>{
     it("should return user _id, email and jwt when user and password are rigth",async ()=>{
 
       const mockJwtSign = jest.spyOn(jwt, 'sign').mockReturnValue("123456");
-      const mockSaveToken = jest.spyOn(UserService, 'saveToken').mockImplementation(async () => {return});
 
       const user = {
         email: "email@example.com",
@@ -162,7 +140,6 @@ describe("user service unit tests", ()=>{
       })
 
       expect(mockGetUserByEmail).toHaveBeenCalledTimes(1);
-      expect(mockSaveToken).toHaveBeenCalledTimes(1);
       expect(mockJwtSign).toHaveBeenCalledTimes(1);
     });
   });

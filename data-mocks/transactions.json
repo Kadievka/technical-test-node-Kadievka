@@ -1,0 +1,460 @@
+[{
+  "_id": {
+    "$oid": "621bb60a184d78385c7fa8c0"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "USA",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:02.460Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:02.460Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb60c184d78385c7fa8c4"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "USA",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:04.826Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:04.826Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb60e184d78385c7fa8c8"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "USA",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:06.244Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:06.244Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb612184d78385c7fa8cc"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:10.372Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:10.372Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb613184d78385c7fa8d0"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:11.310Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:11.310Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb614184d78385c7fa8d4"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:12.182Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:12.182Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb616184d78385c7fa8d8"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:14.159Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:14.159Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb61e184d78385c7fa8dc"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:22.655Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:22.655Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb61f184d78385c7fa8e0"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:23.475Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:23.475Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb620184d78385c7fa8e4"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:24.435Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:24.435Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb621184d78385c7fa8e8"
+  },
+  "transactionDate": "25/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:25.768Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:25.768Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb628184d78385c7fa8ec"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:32.428Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:32.428Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb629184d78385c7fa8f0"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 432,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:33.359Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:33.359Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb636184d78385c7fa8f6"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 4122,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "JN",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:34:46.639Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:34:46.639Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb648184d78385c7fa8fa"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 1000,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "USA",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T17:35:04.469Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:35:04.469Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb64c184d78385c7fa8fe"
+  },
+  "transactionDate": "27/02/2022",
+  "unit": 1000,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "USA",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T17:35:08.097Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:35:08.097Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb651184d78385c7fa902"
+  },
+  "transactionDate": "27/02/2022",
+  "unit": 1000,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T17:35:13.617Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:35:13.617Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bb659184d78385c7fa906"
+  },
+  "transactionDate": "27/02/2022",
+  "unit": 645,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "CO",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T17:35:21.836Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T17:38:18.492Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bbfd31f6799053c60d92f"
+  },
+  "transactionDate": "29/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:15:47.860Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:15:47.860Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bbfd71f6799053c60d933"
+  },
+  "transactionDate": "30/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:15:51.580Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:15:51.580Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bc0191f6799053c60d93b"
+  },
+  "transactionDate": "24/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "ESP",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:16:57.755Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:16:57.755Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bc2910a460d3cfc846a2d"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:27:29.383Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:27:29.383Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bc2950a460d3cfc846a31"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "AR",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:27:33.683Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:27:33.683Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bc2990a460d3cfc846a35"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 32,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "CO",
+  "transactionCode": 1,
+  "createdAt": {
+    "$date": "2022-02-27T18:27:37.547Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T18:27:37.547Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bd828a5bdf83adc370c5c"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 2342,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "CO",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T19:59:36.235Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T19:59:36.235Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bd82fa5bdf83adc370c60"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 324,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "VE",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T19:59:43.775Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T19:59:43.775Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621bd83aa5bdf83adc370c64"
+  },
+  "transactionDate": "26/02/2022",
+  "unit": 101,
+  "deleted": false,
+  "productReference": "443",
+  "countryIsoCode": "AR",
+  "transactionCode": 0,
+  "createdAt": {
+    "$date": "2022-02-27T19:59:54.773Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-27T19:59:54.773Z"
+  },
+  "__v": 0
+}]
