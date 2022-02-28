@@ -108,7 +108,7 @@ const router = express.Router();
  *                         type: string
  *                         example: "27/02/2022"
  *                       unit:
- *                         type: string
+ *                         type: number
  *                         example: 100
  *                       productReference:
  *                         type: string
@@ -117,7 +117,7 @@ const router = express.Router();
  *                         type: string
  *                         example: "ESP"
  *                       transactionCode:
- *                         type: string
+ *                         type: number
  *                         example: 0
  *                   message:
  *                     type: string
@@ -202,7 +202,7 @@ router.route("/summary").get(
  *                         type: string
  *                         example: "27/02/2022"
  *                       unit:
- *                         type: string
+ *                         type: number
  *                         example: 100
  *                       productReference:
  *                         type: string
@@ -211,7 +211,7 @@ router.route("/summary").get(
  *                         type: string
  *                         example: "ESP"
  *                       transactionCode:
- *                         type: string
+ *                         type: number
  *                         example: 0
  *                   message:
  *                     type: string
@@ -238,7 +238,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                type: string
  *                example: "27/02/2022"
  *              unit:
- *                type: string
+ *                type: number
  *                example: 100
  *              productReference:
  *                type: string
@@ -247,7 +247,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                type: string
  *                example: "ESP"
  *              transactionCode:
- *                type: string
+ *                type: number
  *                example: 0
  *     responses:
  *       422:
@@ -329,7 +329,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                       type: string
  *                       example: "27/2/2022"
  *                     unit:
- *                       type: string
+ *                       type: number
  *                       example: 100
  *                     productReference:
  *                       type: string
@@ -338,7 +338,7 @@ router.route("/").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algorithms
  *                       type: string
  *                       example: "ESP"
  *                     transactionCode:
- *                       type: string
+ *                       type: number
  *                       example: 0
  *                 message:
  *                   type: string
@@ -406,7 +406,7 @@ router.route("/create").post(
  *                       type: string
  *                       example: "27/02/2022"
  *                     unit:
- *                       type: string
+ *                       type: number
  *                       example: 100
  *                     productReference:
  *                       type: string
@@ -415,7 +415,7 @@ router.route("/create").post(
  *                       type: string
  *                       example: "ESP"
  *                     transactionCode:
- *                       type: string
+ *                       type: number
  *                       example: 0
  *                 message:
  *                   type: string
@@ -466,7 +466,7 @@ router.route("/:_id").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algori
  *                type: string
  *                example: "27/02/2022"
  *              unit:
- *                type: string
+ *                type: number
  *                example: 100
  *              productReference:
  *                type: string
@@ -475,7 +475,7 @@ router.route("/:_id").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algori
  *                type: string
  *                example: "ESP"
  *              transactionCode:
- *                type: string
+ *                type: number
  *                example: 0
  *     responses:
  *       422:
@@ -557,7 +557,7 @@ router.route("/:_id").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algori
  *                       type: string
  *                       example: "27/02/2022"
  *                     unit:
- *                       type: string
+ *                       type: number
  *                       example: 100
  *                     productReference:
  *                       type: string
@@ -566,7 +566,7 @@ router.route("/:_id").get(jwtMiddleware({ secret: process.env.JWT_SECRET, algori
  *                       type: string
  *                       example: "ESP"
  *                     transactionCode:
- *                       type: string
+ *                       type: number
  *                       example: 0
  *                 message:
  *                   type: string
@@ -648,7 +648,7 @@ router.route("/update/:_id").put(jwtMiddleware({ secret: process.env.JWT_SECRET,
  *                       type: string
  *                       example: "27/02/2022"
  *                     unit:
- *                       type: string
+ *                       type: number
  *                       example: 100
  *                     productReference:
  *                       type: string
@@ -657,7 +657,7 @@ router.route("/update/:_id").put(jwtMiddleware({ secret: process.env.JWT_SECRET,
  *                       type: string
  *                       example: "ESP"
  *                     transactionCode:
- *                       type: string
+ *                       type: number
  *                       example: 0
  *                 message:
  *                   type: string
