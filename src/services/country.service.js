@@ -8,7 +8,21 @@ logger.level = process.env.LOGGER_LEVEL;
 
 export default class CountryService {
 
-  static async createCountry(country) {
+  static instance;
+
+  static getInstance() {
+      if (!CountryService.instance) {
+        CountryService.instance = new CountryService();
+      }
+
+      return CountryService.instance;
+    }
+
+  static destroyInstance(){
+    delete this.instance;
+  }
+
+  async createCountry(country) {
     logger.info("[createCountry@CountryService] INIT");
     const countryExists = await this.getCountryByIsoCode(country.isoCode);
     if(countryExists){
@@ -23,7 +37,7 @@ export default class CountryService {
     }
   }
 
-  static async getAllCountries() {
+  async getAllCountries() {
     return Country.aggregate([
       {"$project": {
         "_id": 1,
@@ -34,11 +48,11 @@ export default class CountryService {
     ]);
   }
 
-  static async getCountryByIsoCode(isoCode) {
+  async getCountryByIsoCode(isoCode) {
     return Country.findOne({isoCode});
   }
 
-  static async getCountryByIsoCodeService(isoCode) {
+  async getCountryByIsoCodeService(isoCode) {
     return Country.findOne({isoCode}).select({
       _id: 1,
       isoCode: 1,
@@ -46,7 +60,7 @@ export default class CountryService {
     });
   }
 
-  static async updateCountry(isoCode, updateData) {
+  async updateCountry(isoCode, updateData) {
     return Country.findOneAndUpdate({isoCode}, updateData, {new: true}).select({
       _id: 1,
       isoCode: 1,
@@ -54,7 +68,7 @@ export default class CountryService {
     });
   }
 
-  static async deleteCountry(isoCode) {
+  async deleteCountry(isoCode) {
     return Country.findOneAndDelete({isoCode}).select({
       _id: 1,
       isoCode: 1,
@@ -62,8 +76,8 @@ export default class CountryService {
     });
   }
 
-  static async validateIsoCodes(isoCodes){
-    logger.info(`[validateIsoCodes@CountryService] INIT isoCodes: ${isoCodes}`);
+  async validateCountryIsoCodes(isoCodes){
+    logger.info(`[validateCountryIsoCodes@CountryService] INIT isoCodes: ${isoCodes}`);
     let validIsoCodes = [];
     if(isoCodes.length){
       for (const isoCode of isoCodes) {
@@ -76,11 +90,11 @@ export default class CountryService {
         return validIsoCodes.indexOf(item) === index;
       });
     }
-    logger.info(`[validateIsoCodes@CountryService] FINISH validIsoCodes: ${validIsoCodes}`);
+    logger.info(`[validateCountryIsoCodes@CountryService] FINISH validIsoCodes: ${validIsoCodes}`);
     return validIsoCodes;
   }
 
-  static async validateCountryIsoCode(isoCode, throwException = false) {
+  async validateCountryIsoCode(isoCode, throwException = false) {
     logger.info(`[validateCountryIsoCode@CountryService] INIT isoCode: ${isoCode}`);
 
     const countryExists = await this.getCountryByIsoCode(isoCode);

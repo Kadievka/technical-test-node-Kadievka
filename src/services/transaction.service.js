@@ -1,6 +1,4 @@
 import Transaction, { TransactionCodeOptions } from "../models/Transaction";
-import errors from "../utils/codeInternalErrors";
-import throwError from "../utils/throwError";
 import log4js from "log4js";
 import CountryService from "./country.service";
 import { today } from "../utils/dateUtil";
@@ -10,7 +8,29 @@ const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
 export default class TransactionService {
-  static async getTransactionSummary(filterOptions) {
+
+  countryService;
+
+  marketService;
+
+  constructor() {
+    this.countryService = CountryService.getInstance();
+    this.marketService = MarketService.getInstance();
+  }
+
+  static getInstance() {
+    if (!TransactionService.instance) {
+      TransactionService.instance = new TransactionService();
+    }
+
+    return TransactionService.instance;
+  }
+
+  static destroyInstance(){
+    delete this.instance;
+  }
+
+  async getTransactionSummary(filterOptions) {
     logger.info(`[getTransactionSummary@TransactionService] INIT filterOptions: ${filterOptions}`);
 
     if (!filterOptions.dateTo) {
@@ -24,14 +44,14 @@ export default class TransactionService {
     };
 
     if (filterOptions.marketCode) {
-      const market = await MarketService.getMarketByIsoCodeService(filterOptions.marketCode);
+      const market = await this.marketService.getMarketByCodeService(filterOptions.marketCode);
       if (market) {
         query.$match.countryIsoCode = { $in: market.countryIsoCodes };
       }
     }
 
     if (filterOptions.countryIsoCode) {
-      const country = await CountryService.validateCountryIsoCode(filterOptions.countryIsoCode);
+      const country = await this.countryService.validateCountryIsoCode(filterOptions.countryIsoCode);
       if (country) {
         query.$match.countryIsoCode = { $eq: filterOptions.countryIsoCode };
       }
@@ -77,9 +97,9 @@ export default class TransactionService {
     };
   }
 
-  static async createTransaction(transaction) {
+  async createTransaction(transaction) {
     logger.info("[createTransaction@TransactionService] INIT");
-    await CountryService.validateCountryIsoCode(transaction.countryIsoCode, true);
+    await this.countryService.validateCountryIsoCode(transaction.countryIsoCode, true);
     const createdTransaction = await Transaction.create(transaction);
     logger.info("[createTransaction@TransactionService] FINISH");
     return {
@@ -92,7 +112,7 @@ export default class TransactionService {
     };
   }
 
-  static async getAllTransactions() {
+  async getAllTransactions() {
     return Transaction.aggregate([
       {
         $project: {
@@ -108,7 +128,7 @@ export default class TransactionService {
     ]);
   }
 
-  static async getTransactionByIdService(_id) {
+  async getTransactionByIdService(_id) {
     return Transaction.findById(_id).select({
       _id: 1,
       transactionDate: 1,
@@ -119,8 +139,8 @@ export default class TransactionService {
     });
   }
 
-  static async updateTransaction(_id, updateData) {
-    await CountryService.validateCountryIsoCode(updateData.countryIsoCode, true);
+  async updateTransaction(_id, updateData) {
+    await this.countryService.validateCountryIsoCode(updateData.countryIsoCode, true);
     return Transaction.findByIdAndUpdate(_id, updateData, { new: true }).select({
       _id: 1,
       transactionDate: 1,
@@ -131,7 +151,7 @@ export default class TransactionService {
     });
   }
 
-  static async deleteTransaction(_id) {
+  async deleteTransaction(_id) {
     return Transaction.findByIdAndDelete(_id).select({
       _id: 1,
       transactionDate: 1,

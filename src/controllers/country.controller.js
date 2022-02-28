@@ -7,11 +7,13 @@ import log4js from "log4js";
 const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
+const countryService = CountryService.getInstance();
+
 async function createCountry(req, res) {
   logger.info("[createCountry@controller] INIT");
   try {
     const countryData = req.body;
-    const country = await CountryService.createCountry(countryData);
+    const country = await countryService.createCountry(countryData);
     ResponseUtil.success(res, country);
   } catch (error) {
     logger.error("[createCountry@controller] ERROR", error);
@@ -24,7 +26,7 @@ async function createCountry(req, res) {
 async function getAllCountries(req, res) {
   logger.info("[getAllCountries@controller] INIT");
   try {
-    const countries = await CountryService.getAllCountries();
+    const countries = await countryService.getAllCountries();
     ResponseUtil.success(res, countries);
   } catch (error) {
     logger.error("[getAllCountries@controller] ERROR", error);
@@ -39,7 +41,7 @@ async function getCountryByIsoCode(req, res) {
   try {
     const isoCode = req.params.isoCode;
     logger.info(`[getCountryByIsoCode@controller] isoCode: ${isoCode}`);
-    const country = await CountryService.getCountryByIsoCodeService(isoCode);
+    const country = await countryService.getCountryByIsoCodeService(isoCode);
     ResponseUtil.nullResponseHandler(res, country);
   } catch (error) {
     logger.error("[getCountryByIsoCode@controller] ERROR", error);
@@ -55,7 +57,7 @@ async function updateCountry(req, res) {
     const isoCode = req.params.isoCode;
     const updateData = req.body;
     logger.info(`[updateCountry@controller] isoCode: ${isoCode}`);
-    const country = await CountryService.updateCountry(isoCode, updateData);
+    const country = await countryService.updateCountry(isoCode, updateData);
     ResponseUtil.nullResponseHandler(res, country);
   } catch (error) {
     logger.error("[updateCountry@controller] ERROR", error);
@@ -70,7 +72,7 @@ async function deleteCountry(req, res) {
   try {
     const isoCode = req.params.isoCode;
     logger.info(`[deleteCountry@controller] isoCode: ${isoCode}`);
-    const country = await CountryService.deleteCountry(isoCode);
+    const country = await countryService.deleteCountry(isoCode);
     ResponseUtil.nullResponseHandler(res, country);
   } catch (error) {
     logger.error("[deleteCountry@controller] ERROR", error);

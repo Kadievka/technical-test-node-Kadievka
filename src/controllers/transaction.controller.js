@@ -7,11 +7,13 @@ import log4js from "log4js";
 const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
+const transactionService = TransactionService.getInstance();
+
 async function getTransactionSummary(req, res) {
   logger.info("[getTransactionSummary@controller] INIT");
   try {
     const filterOptions = req.query;
-    const transaction = await TransactionService.getTransactionSummary(filterOptions);
+    const transaction = await transactionService.getTransactionSummary(filterOptions);
     ResponseUtil.success(res, transaction);
   } catch (error) {
     logger.error("[getTransactionSummary@controller] ERROR", error);
@@ -27,7 +29,7 @@ async function createTransaction(req, res) {
   logger.info("[createTransaction@controller] INIT");
   try {
     const transactionData = req.body;
-    const transaction = await TransactionService.createTransaction(transactionData);
+    const transaction = await transactionService.createTransaction(transactionData);
     ResponseUtil.success(res, transaction);
   } catch (error) {
     logger.error("[createTransaction@controller] ERROR", error);
@@ -43,7 +45,7 @@ async function createTransaction(req, res) {
 async function getAllTransactions(req, res) {
   logger.info("[getAllTransactions@controller] INIT");
   try {
-    const transactions = await TransactionService.getAllTransactions();
+    const transactions = await transactionService.getAllTransactions();
     ResponseUtil.success(res, transactions);
   } catch (error) {
     logger.error("[getAllTransactions@controller] ERROR", error);
@@ -58,7 +60,7 @@ async function getTransactionById(req, res) {
   try {
     const _id = req.params._id;
     logger.info(`[getTransactionById@controller] _id: ${_id}`);
-    const transaction = await TransactionService.getTransactionByIdService(_id);
+    const transaction = await transactionService.getTransactionByIdService(_id);
     ResponseUtil.nullResponseHandler(res, transaction);
   } catch (error) {
     logger.error("[getTransactionById@controller] ERROR", error);
@@ -74,7 +76,7 @@ async function updateTransaction(req, res) {
     const _id = req.params._id;
     const updateData = req.body;
     logger.info(`[updateTransaction@controller] _id: ${_id}`);
-    const transaction = await TransactionService.updateTransaction(_id, updateData);
+    const transaction = await transactionService.updateTransaction(_id, updateData);
     ResponseUtil.nullResponseHandler(res, transaction);
   } catch (error) {
     logger.error("[updateTransaction@controller] ERROR", error);
@@ -89,7 +91,7 @@ async function deleteTransaction(req, res) {
   try {
     const _id = req.params._id;
     logger.info(`[deleteTransaction@controller] _id: ${_id}`);
-    const transaction = await TransactionService.deleteTransaction(_id);
+    const transaction = await transactionService.deleteTransaction(_id);
     ResponseUtil.nullResponseHandler(res, transaction);
   } catch (error) {
     logger.error("[deleteTransaction@controller] ERROR", error);
