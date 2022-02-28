@@ -1,5 +1,5 @@
-import Country from "../models/Country";
-import CountryService from "../services/country.service";
+import Country from "../src/models/Country";
+import CountryService from "../src/services/country.service";
 
 const mockCreatedCountry = {
   "_id": {

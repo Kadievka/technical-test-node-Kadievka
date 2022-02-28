@@ -1,6 +1,6 @@
-import Market from "../models/Market";
-import MarketService from "../services/market.service";
-import CountryService from "../services/country.service"
+import Market from "../src/models/Market";
+import MarketService from "../src/services/market.service";
+import CountryService from "../src/services/country.service"
 
 const mockMarketLA = {
   "_id": {

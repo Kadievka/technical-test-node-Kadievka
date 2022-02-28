@@ -1,7 +1,7 @@
-import Transaction from "../models/Transaction";
-import MarketService from "../services/market.service";
-import CountryService from "../services/country.service"
-import TransactionService from "../services/transaction.service";
+import Transaction from "../src/models/Transaction";
+import MarketService from "../src/services/market.service";
+import CountryService from "../src/services/country.service"
+import TransactionService from "../src/services/transaction.service";
 
 const mockTransaction = {
   "_id": {

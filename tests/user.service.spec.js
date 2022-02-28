@@ -1,5 +1,5 @@
-import UserService from "../services/user.service";
-import User from "../models/User";
+import UserService from "../src/services/user.service";
+import User from "../src/models/User";
 import jwt from "jsonwebtoken";
 
 const mockCreatedUser = {

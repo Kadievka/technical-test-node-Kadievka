@@ -1,4 +1,4 @@
 module.exports = {
   testEnvironment: 'node',
-  collectCoverageFrom: ["src/services/*.js"],
+  testPathIgnorePatterns: ["/node_modules/", "/public/", "/src/config/", "/src/templates/"]
 };
