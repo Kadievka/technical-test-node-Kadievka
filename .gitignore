@@ -112,3 +112,5 @@ public/*
 public/images/*
 !public/images/.gitkeep
 !public/favicon.svg
+
+data-mocks/countries2.json

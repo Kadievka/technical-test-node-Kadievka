@@ -22,7 +22,7 @@ const router = express.Router();
  *       - transaction
  *     security:
  *       - jwt: []
- *     summary: Gets all resources.
+ *     summary: Get all transactions and filter by options.
  *     parameters:
  *       - in: query
  *         name: dateFrom
